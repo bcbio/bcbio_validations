@@ -26,7 +26,7 @@ Timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 
 - FreeBayes: 9:34
 - GATK3: 15:59
-- GATK4:
+- GATK4: 25:22
 - Sentieon haplotyper: 11:47 -- not full utilization at end, waiting for a few
   slow regions to finish (@10:49313060 -- 7:30, @16:49979430 -- 5:30); could
   likely improve with downsampling.
