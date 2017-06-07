@@ -22,7 +22,7 @@ of the lost sensitivity.
 
 Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 
-- FreeBayes: 14:40
+- FreeBayes: 6:23
 - GATK3: 9:56
 - GATK4: 6:05
 - VarDict: 2:39
@@ -56,8 +56,9 @@ Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 - GATK3: 15:59
 - GATK4: 25:22
 - Sentieon haplotyper: 11:47 -- not full utilization at end, waiting for a few
-  slow regions to finish (@10:49313060 -- 7:30, @16:49979430 -- 5:30); could
-  likely improve with downsampling.
+  slow regions to finish (@10:49313060 -- 7:30, @16:49979430 -- 5:30); Need to
+  retest with improved bcbio region sorting; could
+  also likely improve with downsampling
 
 Versions:
 - GRCh37 genome build
