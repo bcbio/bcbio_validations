@@ -68,3 +68,29 @@ Versions:
 - Sentieon Haplotyper 201704
 - Genome in a Bottle NA24385 truth set v3.3.2
 
+## Low frequency allele filter
+
+On the 10x community forum, the 10x genomics team
+[recommended using an allele frequency based filter](https://community.10xgenomics.com/t5/Genome-Exome-Forum/Best-practices-for-trimming-adapters-when-variant-calling/m-p/473) to
+avoid false positives. This helps segregate true positive and false positives
+from the initial validation:
+
+![NA24385_bcbio_af-AD](NA24385_bcbio_af/10xrec-tp_fp_AD.png)
+
+Since there is an overlap in the tails of the true positive and false positives,
+we looked for an additional variable to filter on, and settled on
+ReadPosRankSum:
+
+![NA24385_bcbio_af-ReadPosRankSum](10xrec-lowaf-tp_fp_ReadPosRankSum.png)
+
+The final filter then removes low quality, low allele frequency calls at the
+ends of reads:
+
+    QD < 10.0 && AD[1] / (AD[1] + AD[0]) < 0.25 && ReadPosRankSum < 0.0
+
+This provides more than a 3x improvement in specificity compared with the
+original calls:
+
+![NA24385_bcbio_af](NA24385_bcbio_af/grading-summary-NA24385.png)
+
+In this plot, `-af` values have the low allele frequency filter applied.
