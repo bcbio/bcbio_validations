@@ -40,13 +40,16 @@ Versions:
 
 ## NA24385 10x data on GRCh37
 
-NA24385 validation using [50x HiSeqX inputs from 10x genomics](https://support.10xgenomics.com/de-novo-assembly/datasets)
+NA24385 validation using
+[50x HiSeqX inputs from 10x genomics](https://support.10xgenomics.com/de-novo-assembly/datasets).
+This explores the role of trimming and low allele frequency filters for
+improving sensitivity and specificity of analyzing 10x data.
 
 ### bcbio original
 
-GATK based approaches appear to over-call likely due to soft-clipped adapters. Need to explore
-approaches to filter and remove these. GATK3, GATK4 and Sentieon haplotyper
-perform similarly.
+GATK based approaches appear to over-call likely due to soft-clipped adapters.
+We need to explore approaches to filter and remove these. GATK3, GATK4 and
+Sentieon haplotyper perform similarly.
 
 ![NA24385_bcbio_orig](NA24385_bcbio_orig/grading-summary-NA24385.png)
 
@@ -89,8 +92,35 @@ ends of reads:
     QD < 10.0 && AD[1] / (AD[1] + AD[0]) < 0.25 && ReadPosRankSum < 0.0
 
 This provides more than a 3x improvement in specificity compared with the
-original calls:
+original calls, with a slight reduction in sensitivity.
 
 ![NA24385_bcbio_af](NA24385_bcbio_af/grading-summary-NA24385.png)
 
 In this plot, `-af` values have the low allele frequency filter applied.
+
+### 10x adapter trimming + low frequency allele filter
+
+The 10x genomics team
+[also recommended trimming of inputs](https://community.10xgenomics.com/t5/Genome-Exome-Forum/Best-practices-for-trimming-adapters-when-variant-calling/m-p/473):
+
+> In terms of trimming, we recommend trimming the first 16+7bp of R1, and the
+> first 1bp of R2. R1 contains the 16bp 10x barcode + 7bp of low accuracy
+> sequence from an N-mer oligo. The first bp of R2 empirically has about a 5x
+> higher mismatch rate.
+
+The low frequency filter on untrimmed reads did not fully resolve false positive
+issues, likely due to the low accuracy R1 bases not at the end of the reads. To
+explore trimming, we removed the adapters and low quality bases prior to
+alignment and variant calling. Below are the results for trimming only (`-trim`)
+and trimming plus the low frequency allelef filter (`-trim-af`):
+
+![NA24385_bcbio_trim_af](NA24385_bcbio_trim_af/grading-summary-NA24385.png)
+
+- Trimming removes about half of the false positives, but still leaves poor
+  specificity compared to FreeBayes.
+- Trimming and the allele frequency filter make SNP detection specificity on-par
+  with FreeBayes.
+- There are still 2-3x more indel false positives compared to FreeBayes, but
+  with improved sensitivity.
+- Sensitivity of trimmed and filtered variants is better than original
+  untrimmed/unfiltered analysis.
