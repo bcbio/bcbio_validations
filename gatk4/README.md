@@ -37,6 +37,12 @@ Versions:
 - Sentieon Haplotyper 201704
 - Genome in a Bottle NA24385 truth set v3.3.2
 
+### Low frequency allele filter
+
+The low frequency allele filter, used below to eliminate noise in 10x input
+data, also provides improved specificity with a small cost to sensitivity:
+
+![NA12878_hg38_af](NA12878_hg38_af/grading-summary-giab.png)
 
 ## NA24385 10x data on GRCh37
 
@@ -124,3 +130,21 @@ and trimming plus the low frequency allelef filter (`-trim-af`):
   with improved sensitivity.
 - Sensitivity of trimmed and filtered variants is better than original
   untrimmed/unfiltered analysis.
+
+## DREAM synthetic 4 -- MuTect2
+
+We validated GATK4 MuTect2 using the
+[ICGC-TCGA DREAM challenge synthetic 4 dataset](https://www.synapse.org/#!Synapse:syn312572/wiki/62018).
+This sample has 80% cellularity and sublclones at 30% and 15%. 
+
+![dream_syn4](dream_syn4/grading-summary-syn4-38.png)
+
+GATK4's MuTect1 has more SNP false positives relative to VarDict and
+Sentieon's TNscope.
+
+Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
+
+- FreeBayes: 8:29
+- GATK4 MuTect2: 5:09
+- VarDict: 3:51
+- Sentieon tnscope: 1:41
