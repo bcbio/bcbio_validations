@@ -139,9 +139,6 @@ This sample has 80% cellularity and sublclones at 30% and 15%.
 
 ![dream_syn4](dream_syn4/grading-summary-syn4-38.png)
 
-GATK4's MuTect1 has more SNP false positives relative to VarDict and
-Sentieon's TNscope.
-
 Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 
 - FreeBayes: 8:29

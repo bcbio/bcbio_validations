@@ -1,10 +1,10 @@
 sample,caller,vtype,metric,value
-DREAM synthetic 4 (hg38),mutect2,SNPs,tp,8823
-DREAM synthetic 4 (hg38),mutect2,Indels,tp,7693
-DREAM synthetic 4 (hg38),mutect2,SNPs,fp,10023
-DREAM synthetic 4 (hg38),mutect2,Indels,fp,1658
-DREAM synthetic 4 (hg38),mutect2,SNPs,fn,2795
-DREAM synthetic 4 (hg38),mutect2,Indels,fn,2360
+DREAM synthetic 4 (hg38),mutect2,SNPs,tp,8797
+DREAM synthetic 4 (hg38),mutect2,Indels,tp,7657
+DREAM synthetic 4 (hg38),mutect2,SNPs,fp,1279
+DREAM synthetic 4 (hg38),mutect2,Indels,fp,744
+DREAM synthetic 4 (hg38),mutect2,SNPs,fn,2821
+DREAM synthetic 4 (hg38),mutect2,Indels,fn,2396
 DREAM synthetic 4 (hg38),tnscope,SNPs,tp,8799
 DREAM synthetic 4 (hg38),tnscope,Indels,tp,7801
 DREAM synthetic 4 (hg38),tnscope,SNPs,fp,1300
