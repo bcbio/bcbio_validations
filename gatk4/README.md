@@ -131,9 +131,15 @@ and trimming plus the low frequency allelef filter (`-trim-af`):
 - Sensitivity of trimmed and filtered variants is better than original
   untrimmed/unfiltered analysis.
 
-## DREAM synthetic 4 -- MuTect2
+Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 
-We validated GATK4 MuTect2 using the
+- FreeBayes: 8:59
+- GATK4: 39:52
+- Sentieon haplotyper: 15:02
+
+## Somatic DREAM synthetic 4
+
+We validated somatic mutation detection with GATK4 MuTect2 using the
 [ICGC-TCGA DREAM challenge synthetic 4 dataset](https://www.synapse.org/#!Synapse:syn312572/wiki/62018).
 This sample has 80% cellularity and sublclones at 30% and 15%. 
 
@@ -145,3 +151,25 @@ Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 - GATK4 MuTect2: 5:09
 - VarDict: 3:51
 - Sentieon tnscope: 1:41
+
+## Somatic NA12878/NA24385 mixture
+
+This is a sequenced mixture dataset of two Genome in a Bottle samples simulating
+a lower frequency set of call. It has a 90x tumor genome consisting of 30% NA12878 
+(tumor) and 70% NA24385 (germline) and a 30x normal genome of NA24385. Unique
+NA12878 variants are somatic variations at 15% and 30%.
+
+Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
+
+- FreeBayes: 31:21
+- VarDict: 25:43
+
+MuTect2 and tnscope were really slow on this dataset and we did not finish
+analysis. We process harder segments first during analysis but finishing the
+first few regions took:
+
+- GATK4 MuTect2: 47:29
+- Sentieon tnscope: 39:15
+
+We need to explore downsampling or other approaches to help deal with runtimes
+on this dataset.
