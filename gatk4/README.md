@@ -159,17 +159,10 @@ a lower frequency set of call. It has a 90x tumor genome consisting of 30% NA128
 (tumor) and 70% NA24385 (germline) and a 30x normal genome of NA24385. Unique
 NA12878 variants are somatic variations at 15% and 30%.
 
+![NA12878-NA24385](NA12878-NA24385/grading-summary-24385.png)
+
 Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 
 - FreeBayes: 31:21
 - VarDict: 25:43
-
-MuTect2 and tnscope were really slow on this dataset and we did not finish
-analysis. We process harder segments first during analysis but finishing the
-first few regions took:
-
-- GATK4 MuTect2: 47:29
-- Sentieon tnscope: 39:15
-
-We need to explore downsampling or other approaches to help deal with runtimes
-on this dataset.
+- GATK4 MuTect2 (4.0b3): 62:46

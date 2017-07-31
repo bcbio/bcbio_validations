@@ -1,0 +1,25 @@
+sample,caller,vtype,metric,value
+NA12878/NA24385 mixture,ensemble,SNPs,tp,919212
+NA12878/NA24385 mixture,ensemble,Indels,tp,69066
+NA12878/NA24385 mixture,ensemble,SNPs,fp,282
+NA12878/NA24385 mixture,ensemble,Indels,fp,177
+NA12878/NA24385 mixture,ensemble,SNPs,fn,88635
+NA12878/NA24385 mixture,ensemble,Indels,fn,27851
+NA12878/NA24385 mixture,vardict,SNPs,tp,917053
+NA12878/NA24385 mixture,vardict,Indels,tp,72541
+NA12878/NA24385 mixture,vardict,SNPs,fp,1772
+NA12878/NA24385 mixture,vardict,Indels,fp,3341
+NA12878/NA24385 mixture,vardict,SNPs,fn,90794
+NA12878/NA24385 mixture,vardict,Indels,fn,24376
+NA12878/NA24385 mixture,mutect2,SNPs,tp,865910
+NA12878/NA24385 mixture,mutect2,Indels,tp,69643
+NA12878/NA24385 mixture,mutect2,SNPs,fp,11145
+NA12878/NA24385 mixture,mutect2,Indels,fp,11499
+NA12878/NA24385 mixture,mutect2,SNPs,fn,141937
+NA12878/NA24385 mixture,mutect2,Indels,fn,27274
+NA12878/NA24385 mixture,freebayes,SNPs,tp,908784
+NA12878/NA24385 mixture,freebayes,Indels,tp,61081
+NA12878/NA24385 mixture,freebayes,SNPs,fp,481
+NA12878/NA24385 mixture,freebayes,Indels,fp,611
+NA12878/NA24385 mixture,freebayes,SNPs,fn,99063
+NA12878/NA24385 mixture,freebayes,Indels,fn,35836
