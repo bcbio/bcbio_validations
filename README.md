@@ -10,3 +10,4 @@ progress. We typically write up more details on finalized runs to share more
 widely.
 
 - gatk4 -- Comparisons with the new open source GATK4.
+- freebayes -- Version updates and filter changes with FreeBayes.

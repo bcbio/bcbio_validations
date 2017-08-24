@@ -1,0 +1,19 @@
+sample,caller,vtype,metric,value
+NA12878,freebayes 1.1.0.44,SNPs,tp,2982908
+NA12878,freebayes 1.1.0.44,Indels,tp,278929
+NA12878,freebayes 1.1.0.44,SNPs,fp,7496
+NA12878,freebayes 1.1.0.44,Indels,fp,8670
+NA12878,freebayes 1.1.0.44,SNPs,fn,6249
+NA12878,freebayes 1.1.0.44,Indels,fn,25353
+NA12878,freebayes 1.1.0.9,SNPs,tp,2982876
+NA12878,freebayes 1.1.0.9,Indels,tp,278771
+NA12878,freebayes 1.1.0.9,SNPs,fp,5974
+NA12878,freebayes 1.1.0.9,Indels,fp,8617
+NA12878,freebayes 1.1.0.9,SNPs,fn,6281
+NA12878,freebayes 1.1.0.9,Indels,fn,25511
+NA12878,gatk-haplotype,SNPs,tp,2981889
+NA12878,gatk-haplotype,Indels,tp,257400
+NA12878,gatk-haplotype,SNPs,fp,3626
+NA12878,gatk-haplotype,Indels,fp,1954
+NA12878,gatk-haplotype,SNPs,fn,7268
+NA12878,gatk-haplotype,Indels,fn,46882
