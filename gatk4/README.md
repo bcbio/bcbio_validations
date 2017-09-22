@@ -145,7 +145,7 @@ with different sequencing methods: NovaSeq, HiSeq X10 with 10x linkers and HiSeq
 exome regions plus all of chr20 to reduce runtimes. We compared the impact of
 Base Quality Score Recalibration (BQSR) on the inputs:
 
-![giab_joint](grading-summary-gj1.png)
+![giab_joint](giab_joint/grading-summary-gj1.png)
 
 BQSR improves specificity as the cost of some loss in sensitivity for both SNPs
 and indels. The biggest impact is on the NA24385 dataset, sequenced on a HiSeq X10
