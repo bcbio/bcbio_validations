@@ -137,6 +137,20 @@ Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 - GATK4: 39:52
 - Sentieon haplotyper: 15:02
 
+## Germline joint calling
+
+[Three Genome in a Bottle samples (NA12878, NA24385, NA24631)](https://github.com/bcbio/bcbio_validation_workflows#joint-calling-validation-workflow-with-genome-in-a-bottle-samples)
+with different sequencing methods: NovaSeq, HiSeq X10 with 10x linkers and HiSeq
+2500, respectively. The initial inputs were whole genome runs that we subset to
+exome regions plus all of chr20 to reduce runtimes. We compared the impact of
+Base Quality Score Recalibration (BQSR) on the inputs:
+
+![giab_joint](grading-summary-gj1.png)
+
+BQSR improves specificity as the cost of some loss in sensitivity for both SNPs
+and indels. The biggest impact is on the NA24385 dataset, sequenced on a HiSeq X10
+machine and including 10x linker sequences.
+
 ## Somatic DREAM synthetic 4
 
 We validated somatic mutation detection with GATK4 MuTect2 using the
