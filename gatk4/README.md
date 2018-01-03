@@ -169,7 +169,7 @@ Wall clock timings on AWS m4.4xlarge (16 cores), measured via log timestamps:
 ## Somatic NA12878/NA24385 mixture
 
 This is a sequenced mixture dataset of two Genome in a Bottle samples simulating
-a lower frequency set of call. It has a 90x tumor genome consisting of 30% NA12878 
+a lower frequency set of calls. It has a 90x tumor genome consisting of 30% NA12878
 (tumor) and 70% NA24385 (germline) and a 30x normal genome of NA24385. Unique
 NA12878 variants are somatic variations at 15% and 30%.
 

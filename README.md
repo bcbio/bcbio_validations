@@ -11,3 +11,4 @@ widely.
 
 - gatk4 -- Comparisons with the new open source GATK4.
 - freebayes -- Version updates and filter changes with FreeBayes.
+- deepvariant -- Validations with the DeepVariant caller and CHM datasets.
