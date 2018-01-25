@@ -28,6 +28,7 @@ and PacBio support drive most of the calls (>10% of calls in any category), so I
 these for breaking down event types across platforms:
 
 Platform support in truth set
+```
 |               | 10X + Ill + PB | Ill + PB      | Ill          | PB           |
 |---------------+----------------+---------------+--------------+--------------|
 | <2kb DEL      | 3482 (15.1%)   | 9797 (42.5%)  | 5843 (25.3%) | 1365 (5.9%)  |
@@ -36,6 +37,7 @@ Platform support in truth set
 | >=2kb INS     | 151 (22.6%)    | 124 (18.6%)   | 2 (0.3%)     | 347 (52.0%)  |
 | <2kb COMPLEX  | 95 (15.5%)     | 79 (12.9%)    | 39 (6.4%)    | 357 (58.4%)  |
 | >=2kb COMPLEX | 30 (23.1%)     | 19 (14.6%)    | 0 (0.0%)     | 68 (52.3%)   |
+```
 
 The primary category of events we expect to miss with Illumina only reads are
 larger insertions, and complex non-indel events, where 50%+ have only PacBio
@@ -48,12 +50,14 @@ standard analysis pipeline, here is a breakdown by SV type for Manta call
 sensitivity on Illumina reads:
 
 Illumina + Manta sensitivity
+```
 | <2kb DEL      | 7988 (34.6%) |
 | >=2kb DEL     | 443 (82.8%)  |
 | <2kb INS      | 7709 (30.6%) |
 | >=2kb INS     | 263 (39.4%)  |
 | <2kb COMPLEX  | 299 (48.9%)  |
 | >=2kb COMPLEX | 65 (50.0%)   |
+```
 
 This provides a bit more color on the results above. We're still doing best on
 deletions, but do better on the large events probably because of improved
