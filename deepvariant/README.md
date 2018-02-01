@@ -24,3 +24,7 @@ Versions:
 - FreeBayes 1.1.0.46
 - strelka 2.8.4
 - DeepVariant 0.4.1
+
+## Resources
+
+- [NA12878 false positives for GATK4 and DeepVariant](https://s3.amazonaws.com/chapmanb/validation/giab-chm/NA12878-gatk4-dp-fps.tar.gz) 
