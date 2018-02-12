@@ -25,6 +25,41 @@ Versions:
 - strelka 2.8.4
 - DeepVariant 0.4.1
 
-## Resources
+### Resources
 
 - [NA12878 false positives for GATK4 and DeepVariant](https://s3.amazonaws.com/chapmanb/validation/giab-chm/NA12878-gatk4-dp-fps.tar.gz) 
+
+## Revised CHM and NA12878 with improved prep
+
+Mark Depristo from the Google DeepVariant team and Sangtae Kim from the Illumina
+Strelka2 team both pointed out a potential issue with the prepared BAM files in
+exome and chr20 regions that might introduce additional bias. These are prepared
+by subsets of whole genome BAM files to read pairs mapping in exome regions,
+which introduces unexpected bias in strandedness and mate placement for
+remaining reads. To avoid this we re-prepared the BAMs keeping any read pairs
+where either end maps in exome (or chr20 regions) and then variant calling only
+in exome regions.
+
+Comparing and contrasting the two BAM preparation methods:
+
+![giab-chm-improvedprep](giab-chm-improvedprep/grading-summary-combined.png)
+
+We see:
+
+- Better NA12878 SNP sensitivity and specificity in the improved BAM 
+  preparation method.
+- Some improvement in NA12878 indel sensitivity and specificity, but not as
+  much as the indel improvement.
+- Very little change in CHM for specificity, but some improvement in
+  sensitivity, especially for SNPs.
+
+This indicates that both machine learning based methods like DeepVariant and
+filter based methods like HaplotypeCaller, Stelka2 and FreeBayes pick up on
+Illumina specific features in the Genome in a Bottle truth sets. This is
+especially relevant for SNP calling. Since the PacBio only CHM dataset
+does not show the same improvements, we're removing an interdependence
+between Illumina inputs and evaluations or introducing errors
+resilient to current metrics used for filtering.
+
+Versions as above with an update to GATK4 release:
+- GATK 4.0.1.0
