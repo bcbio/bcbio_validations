@@ -76,7 +76,8 @@ strelka2 |  0:36 |  0:27 75% |  0:32 89% |  0:28 78% |
 
 ### Trimming runtimes
 
-Trimming times on a 16 core AWS machine with SSD storage:
+Runtimes to trim reads for a 24Gb input BAM file on a 
+16 core AWS machine with SSD storage:
 
 - atropos 1:26
 - fastp 1:19
