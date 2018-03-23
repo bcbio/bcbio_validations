@@ -146,3 +146,31 @@ For atropos trimming:
      TTTTCTTTTC 1538
      CATTCCATTC 1533
      ACTCCAGCCT 1489
+
+## NovaSeq PolyG trimming
+
+Illumina two color chemistry machines, like NovaSeq and NextSeq, produce
+[high base quality polyG artifacts at 3' read ends](https://sequencing.qcfail.com/articles/illumina-2-colour-chemistry-can-overcall-high-confidence-g-bases/).
+While this dataset does not demonstrate this issue, trimming or polyX filtering
+can help avoid the issue.
+
+As an example, here is the depth profile (chromosome, start, end, average depth)
+for a ~90x WGS sample over a region on chromosome two, where you can see a
+~4000x spike in coverage:
+
+    chr2    32890204        32910204        79.07
+    chr2    32909954        32916804        336383.24
+    chr2    32917650        32917916        0.27
+    chr2    32918369        32938369        93.97
+    chr2    32938119        32958119        95.77
+
+This is due to polyG reads piling up at `chr2:32916224-32916626` a polyG stretch
+identified by repeatmasker:
+
+    chr2      32916230 32916625 (209276904) +  (G)n           Simple_repeat            1  396
+
+Low frequency callers that avoid downsampling, like VarDict, MuTect2 and
+Strelka2 can spend a large amount of runtime trying to resolve variants in these
+noise regions. Pre-trimming reads (`trim_reads: atropos` and `adapters: [polyx]`)
+or masking polyX regions (`exclude_regions: [polyx]`) will help avoid
+these runtime issues.
