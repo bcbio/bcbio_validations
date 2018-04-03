@@ -30,7 +30,7 @@ these for breaking down event types across platforms:
 Platform support in truth set
 ```
 |               | 10X + Ill + PB | Ill + PB      | Ill          | PB           |
-|---------------+----------------+---------------+--------------+--------------|
+|---------------|----------------|---------------|--------------|--------------|
 | <2kb DEL      | 3482 (15.1%)   | 9797 (42.5%)  | 5843 (25.3%) | 1365 (5.9%)  |
 | >=2kb DEL     | 404 (75.5%)    | 81 (15.1%)    | 12 (2.2%)    | 25 (4.7%)    |
 | <2kb INS      | 1841 (7.3%)    | 10138 (40.2%) | 5696 (22.6%) | 4692 (18.6%) |
@@ -67,3 +67,40 @@ sensitivity. This is in contrast to the summarized results above where Illumina
 methods do much better on small insertions than large ones, indicating some of
 the algorithms we're using for the consensus set improve on what Manta can do
 alone.
+
+## Smoove validation
+
+[smoove](https://github.com/brentp/smoove) simplifies and improves the process
+of calculating [lumpy structural variation
+calls](https://github.com/arq5x/lumpy-sv). Previously bcbio made use of
+[lumpyexpress](https://github.com/arq5x/lumpy-sv#lumpy-express-usage) and custom
+code to call genotypes with [svtyper](https://github.com/hall-lab/svtyper).
+
+The comparison uses [50x HiSeq x10 data from
+10x](https://github.com/bcbio/bcbio_validation_workflows#joint-calling-validation-workflow-with-genome-in-a-bottle-samples)
+subset to chromsome 20 and exome regions in other chromosomes, compared against
+the in progress [Genome in a Bottle NA24385 (HG002) v0.5.0 truth
+set](ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/AshkenazimTrio/analysis/NIST_UnionSVs_12122017/).
+
+We compare lumpy with smoove versus a custom lumpyexpress plus svtyper, plus
+manta structural variant calls as an additional datapoint. [SURVIVOR
+merge](https://github.com/fritzsedlazeck/SURVIVOR/wiki/Methods-and-Parameter#4-merge-or-consensus-calling-from-multiple-sv-vcf-files)
+combined the truth and evaluation callsets using flexible breakend comparisons.
+The comparisons include lumpyexpress with and without strict genotyping: `nogt`
+allows non heterozygous or homozygous variant calls in the output as well to
+demonstrate possible sensitivity of calls:
+
+![smoove](smoove/grading-summary-NA24385.png)
+
+Not reflected in the validations are a large number of non-insertion and
+deletion events that genotyping and smoove remove: 6909 duplications with no
+genotype lumpyexpress versus 331 with smoove; 8752 inversions with no genotype
+lumpyexpress versus 1141 with smoove; 425 translocations with no genotype
+lumpyexpress versus 1 with smoove. While we don't have validations for these
+events, this is a substantial reduction in likely extra noisy calls.
+
+The smoove implementation has comparable sensitivity and specificity to the
+custom lumpyexpress implementation using genotyping. However both are less
+sensitive than manta or lumpy calling that ignores genotyping. We'll continue to
+tune to improve outputs for this dataset and additional comparison data for
+orthogonal validations.
