@@ -104,3 +104,16 @@ custom lumpyexpress implementation using genotyping. However both are less
 sensitive than manta or lumpy calling that ignores genotyping. We'll continue to
 tune to improve outputs for this dataset and additional comparison data for
 orthogonal validations.
+
+Validation resources:
+
+- [CWL workflow](https://github.com/bcbio/bcbio_validation_workflows#germline-structural-variant-calling)
+- [Aligned BAM file](https://s3.amazonaws.com/biodata/giab/na24385-sv/NA24385-sort.bam)
+- [Smoove variant calls](https://s3.amazonaws.com/biodata/giab/na24385-sv/NA24385-sv-smoove.vcf.gz)
+- [Smoove validation file](https://s3.amazonaws.com/biodata/giab/na24385-sv/NA24385-sv-smoove-validate-merge.vcf.gz) --
+  smoove calls merged with truth set using SURVIVOR, true positives are
+  `SUPP_VEC=11`, false positives are `SUPP_VEC=10`, false negatives are
+  `SUPP_VEC=01`.
+- [Manta variant calls](https://s3.amazonaws.com/biodata/giab/na24385-sv/NA24385-sv-manta.vcf.gz)
+- [Manta validation file](https://s3.amazonaws.com/biodata/giab/na24385-sv/NA24385-sv-manta-validate-merge.vcf.gz) --
+  manta calls merged with truth set using SURVIVOR, TP/FP/FNs as above.
