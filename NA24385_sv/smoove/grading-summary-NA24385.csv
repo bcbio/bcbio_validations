@@ -23,3 +23,9 @@ NA24385,lumpy-smoove,DEL,fn,361
 NA24385,lumpy-smoove,INS,fn,710
 NA24385,lumpy-smoove,DEL,tp,95
 NA24385,lumpy-smoove,INS,tp,17
+NA24385,lumpy-smoove-0.1.5,DEL,fp,189
+NA24385,lumpy-smoove-0.1.5,INS,fp,0
+NA24385,lumpy-smoove-0.1.5,DEL,fn,304
+NA24385,lumpy-smoove-0.1.5,INS,fn,610
+NA24385,lumpy-smoove-0.1.5,DEL,tp,100
+NA24385,lumpy-smoove-0.1.5,INS,tp,62

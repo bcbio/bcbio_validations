@@ -88,7 +88,8 @@ merge](https://github.com/fritzsedlazeck/SURVIVOR/wiki/Methods-and-Parameter#4-m
 combined the truth and evaluation callsets using flexible breakend comparisons.
 The comparisons include lumpyexpress with and without strict genotyping: `nogt`
 allows non heterozygous or homozygous variant calls in the output as well to
-demonstrate possible sensitivity of calls:
+demonstrate possible sensitivity of calls. This includes an evaluation of smoove
+1.0.5, with [smoove sensitivity improvements](https://github.com/brentp/smoove/issues/16):
 
 ![smoove](smoove/grading-summary-NA24385.png)
 
@@ -99,11 +100,10 @@ lumpyexpress versus 1141 with smoove; 425 translocations with no genotype
 lumpyexpress versus 1 with smoove. While we don't have validations for these
 events, this is a substantial reduction in likely extra noisy calls.
 
-The smoove implementation has comparable sensitivity and specificity to the
-custom lumpyexpress implementation using genotyping. However both are less
-sensitive than manta or lumpy calling that ignores genotyping. We'll continue to
-tune to improve outputs for this dataset and additional comparison data for
-orthogonal validations.
+Updated v1.0.5 of smoove has improved sensitivity compared to our custom
+lumpyexpress implementation in bcbio, especially on indels. We'll plan to
+continue to improve sensitivity in comparison with manta and incorporate
+additional validation benchmarks.
 
 Validation resources:
 
