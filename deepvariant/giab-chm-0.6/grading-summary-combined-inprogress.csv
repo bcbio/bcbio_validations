@@ -1,0 +1,49 @@
+sample,caller,vtype,metric,value
+CHM1_CHM13,GATK4 soft filter,SNPs,tp,220511
+CHM1_CHM13,GATK4 soft filter,Indels,tp,25460
+CHM1_CHM13,GATK4 soft filter,SNPs,fp,2028
+CHM1_CHM13,GATK4 soft filter,Indels,fp,2377
+CHM1_CHM13,GATK4 soft filter,SNPs,fn,7817
+CHM1_CHM13,GATK4 soft filter,Indels,fn,4912
+CHM1_CHM13,strelka2-wes,SNPs,tp,222267
+CHM1_CHM13,strelka2-wes,Indels,tp,25648
+CHM1_CHM13,strelka2-wes,SNPs,fp,1655
+CHM1_CHM13,strelka2-wes,Indels,fp,2122
+CHM1_CHM13,strelka2-wes,SNPs,fn,6061
+CHM1_CHM13,strelka2-wes,Indels,fn,4724
+NA12878,strelka2-wes,SNPs,tp,194030
+NA12878,strelka2-wes,Indels,tp,27916
+NA12878,strelka2-wes,SNPs,fp,108
+NA12878,strelka2-wes,Indels,fp,1564
+NA12878,strelka2-wes,SNPs,fn,819
+NA12878,strelka2-wes,Indels,fn,583
+NA12878,GATK4 soft filter,SNPs,tp,191853
+NA12878,GATK4 soft filter,Indels,tp,26870
+NA12878,GATK4 soft filter,SNPs,fp,192
+NA12878,GATK4 soft filter,Indels,fp,1408
+NA12878,GATK4 soft filter,SNPs,fn,2996
+NA12878,GATK4 soft filter,Indels,fn,1629
+CHM1_CHM13,GATK4 CNN filter,SNPs,tp,181592
+CHM1_CHM13,GATK4 CNN filter,Indels,tp,21788
+CHM1_CHM13,GATK4 CNN filter,SNPs,fp,286
+CHM1_CHM13,GATK4 CNN filter,Indels,fp,1617
+CHM1_CHM13,GATK4 CNN filter,SNPs,fn,46736
+CHM1_CHM13,GATK4 CNN filter,Indels,fn,8584
+CHM1_CHM13,strelka2-wes/wgs,SNPs,tp,214545
+CHM1_CHM13,strelka2-wes/wgs,Indels,tp,25646
+CHM1_CHM13,strelka2-wes/wgs,SNPs,fp,1353
+CHM1_CHM13,strelka2-wes/wgs,Indels,fp,1958
+CHM1_CHM13,strelka2-wes/wgs,SNPs,fn,13783
+CHM1_CHM13,strelka2-wes/wgs,Indels,fn,4726
+NA12878,strelka2-wes/wgs,SNPs,tp,175692
+NA12878,strelka2-wes/wgs,Indels,tp,27961
+NA12878,strelka2-wes/wgs,SNPs,fp,91
+NA12878,strelka2-wes/wgs,Indels,fp,888
+NA12878,strelka2-wes/wgs,SNPs,fn,19157
+NA12878,strelka2-wes/wgs,Indels,fn,538
+NA12878,GATK4 CNN filter,SNPs,tp,158713
+NA12878,GATK4 CNN filter,Indels,tp,22820
+NA12878,GATK4 CNN filter,SNPs,fp,36
+NA12878,GATK4 CNN filter,Indels,fp,1444
+NA12878,GATK4 CNN filter,SNPs,fn,36136
+NA12878,GATK4 CNN filter,Indels,fn,5679

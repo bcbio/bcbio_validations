@@ -1,0 +1,49 @@
+sample,caller,vtype,metric,value
+CHM1_CHM13,GATK4 soft filter,SNPs,tp,220511
+CHM1_CHM13,GATK4 soft filter,Indels,tp,25460
+CHM1_CHM13,GATK4 soft filter,SNPs,fp,2028
+CHM1_CHM13,GATK4 soft filter,Indels,fp,2377
+CHM1_CHM13,GATK4 soft filter,SNPs,fn,7817
+CHM1_CHM13,GATK4 soft filter,Indels,fn,4912
+CHM1_CHM13,Strelka2,SNPs,tp,222267
+CHM1_CHM13,Strelka2,Indels,tp,25648
+CHM1_CHM13,Strelka2,SNPs,fp,1655
+CHM1_CHM13,Strelka2,Indels,fp,2122
+CHM1_CHM13,Strelka2,SNPs,fn,6061
+CHM1_CHM13,Strelka2,Indels,fn,4724
+CHM1_CHM13,FreeBayes,SNPs,tp,223974
+CHM1_CHM13,FreeBayes,Indels,tp,23314
+CHM1_CHM13,FreeBayes,SNPs,fp,3774
+CHM1_CHM13,FreeBayes,Indels,fp,2658
+CHM1_CHM13,FreeBayes,SNPs,fn,4354
+CHM1_CHM13,FreeBayes,Indels,fn,7058
+NA12878,Strelka2,SNPs,tp,194030
+NA12878,Strelka2,Indels,tp,27916
+NA12878,Strelka2,SNPs,fp,108
+NA12878,Strelka2,Indels,fp,1564
+NA12878,Strelka2,SNPs,fn,819
+NA12878,Strelka2,Indels,fn,583
+NA12878,GATK4 soft filter,SNPs,tp,191853
+NA12878,GATK4 soft filter,Indels,tp,26870
+NA12878,GATK4 soft filter,SNPs,fp,192
+NA12878,GATK4 soft filter,Indels,fp,1408
+NA12878,GATK4 soft filter,SNPs,fn,2996
+NA12878,GATK4 soft filter,Indels,fn,1629
+NA12878,FreeBayes,SNPs,tp,194147
+NA12878,FreeBayes,Indels,tp,26068
+NA12878,FreeBayes,SNPs,fp,742
+NA12878,FreeBayes,Indels,fp,1799
+NA12878,FreeBayes,SNPs,fn,702
+NA12878,FreeBayes,Indels,fn,2431
+CHM1_CHM13,DeepVariant 0.6,SNPs,tp,223248
+CHM1_CHM13,DeepVariant 0.6,Indels,tp,25804
+CHM1_CHM13,DeepVariant 0.6,SNPs,fp,2294
+CHM1_CHM13,DeepVariant 0.6,Indels,fp,2371
+CHM1_CHM13,DeepVariant 0.6,SNPs,fn,5080
+CHM1_CHM13,DeepVariant 0.6,Indels,fn,4568
+NA12878,DeepVariant 0.6,SNPs,tp,194183
+NA12878,DeepVariant 0.6,Indels,tp,27683
+NA12878,DeepVariant 0.6,SNPs,fp,133
+NA12878,DeepVariant 0.6,Indels,fp,337
+NA12878,DeepVariant 0.6,SNPs,fn,666
+NA12878,DeepVariant 0.6,Indels,fn,816
