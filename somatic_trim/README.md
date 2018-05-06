@@ -174,3 +174,18 @@ Strelka2 can spend a large amount of runtime trying to resolve variants in these
 noise regions. Pre-trimming reads (`trim_reads: atropos` and `adapters: [polyx]`)
 or masking polyX regions (`exclude_regions: [polyx]`) will help avoid
 these runtime issues.
+
+## CWL and old bcbio runtimes on HPC
+
+We benchmarked runtimes for this somatic validation set on an active production 
+HPC SLURM cluster. The goal was to compare the Common Workflow Language
+implementation, running using Cromwell, versus the older bcbio specific IPython
+approach. This is a exome + chr20 tumor/normal, with trimming,
+alignment, 3 variant callers and validation.
+
+The Cromwell SLURM HPC run finished with a walltime of 5:55 and the bcbio
+IPython SLURM HPC run finished in 6:18. The IPython based approach allowed 128
+cores to ensure that core availability was not a bottleneck.
+
+Our hope was comparable runtimes, with most of the runtime is due to tool
+processing and minimal overhead from task orchestration and running.
