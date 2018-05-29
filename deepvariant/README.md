@@ -114,3 +114,7 @@ WGS/WES dual model helps moderately with indels but causes a large loss in
 precision for SNPs. We'll continue to work to tune these:
 
 ![giab-chm-0.6-inprogress](giab-chm-0.6/grading-summary-combined-inprogress.png)
+
+For anyone interested in digging more into these comparisons:
+
+- [The GATK4 CNN, DeepVariant and strelka2 calls for this comparison](https://s3.amazonaws.com/bcbio/validation/bcbio_validate_gatk4_cnn_dv.tar.gz)
