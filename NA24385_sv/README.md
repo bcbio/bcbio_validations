@@ -117,3 +117,15 @@ Validation resources:
 - [Manta variant calls](https://s3.amazonaws.com/biodata/giab/na24385-sv/NA24385-sv-manta.vcf.gz)
 - [Manta validation file](https://s3.amazonaws.com/biodata/giab/na24385-sv/NA24385-sv-manta-validate-merge.vcf.gz) --
   manta calls merged with truth set using SURVIVOR, TP/FP/FNs as above.
+
+## v0.6 SV callset release
+
+The Genome in a Bottle structural variant working group released a new [v0.6 set
+of benchmark structural variants](https://groups.google.com/forum/#!topic/giab-analysis-team/CKRtVgtctgY)
+for NA24385. We used these to re-run the analysis above as a sanity check of the
+new callset when runing short read caller validation. This uses the [bcbio CWL validation workflow](https://github.com/bcbio/bcbio_validation_workflows#germline-structural-variant-calling):
+
+![v0.6](giab_v0_6/grading-summary-NA24385.png)
+
+Both manta and lumpy (with smoove) are similar to the previous results with the
+v0.5.0 release.

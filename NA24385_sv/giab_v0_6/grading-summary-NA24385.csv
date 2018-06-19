@@ -1,0 +1,13 @@
+sample,caller,vtype,metric,value
+NA24385,manta,DEL,fp,60
+NA24385,manta,INS,fp,33
+NA24385,manta,DEL,fn,249
+NA24385,manta,INS,fn,559
+NA24385,manta,DEL,tp,160
+NA24385,manta,INS,tp,122
+NA24385,lumpy,DEL,fp,73
+NA24385,lumpy,INS,fp,0
+NA24385,lumpy,DEL,fn,312
+NA24385,lumpy,INS,fn,623
+NA24385,lumpy,DEL,tp,94
+NA24385,lumpy,INS,tp,50
