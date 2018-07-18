@@ -45,6 +45,7 @@ Versions:
 - pisces 5.2.7.47
 - vardict-java 1.5.1
 - freebayes 1.1.0.46
+- octopus 0.4.1a
 
 ## Low frequency UMI-tagged tumor only samples
 
@@ -55,18 +56,29 @@ we looked at the ability of callers to pick up primarily ~0.5% variants in
 deeply sequenced, tumor-only samples tagged with UMIs. We called UMI consensus
 reads after mapping with
 [fgbio](http://fulcrumgenomics.github.io/fgbio/tools/latest/) and then used
-consensus reads for calling with multiple callers:
+consensus reads for calling with multiple callers. We include 4 callers and an
+ensemble method that reports variants present in at least 2 callers.
 
 ![smcounter2 samples](smcounter2/grading-summary-combined.png)
 
-We're not effectively calling low frequency variants with FreeBayes and Pisces
-on these samples. We effectively only pick up the low frequency calls with
-VarDict, although this also still have much room for improvement in sensitivity.
+All of the callers have room for improvement in both sensitivity and
+specificity. Using an ensemble method indicates that we're consistently calling
+similar variants, both for true and false positives. Ensemble approaches
+currently don't give us a lot of extra sensitivity and specificity. The callers
+have similar blind spots and extra non-somatic calls, and we'll work to
+categorize those and see how we can improve generally within bcbio for these
+difficult cases.
 
-For FreeBayes and Pisces, we don't see calls at all in the majority of the
-concordant variants identified by VarDict. Both callers use low frequency flags;
-`--mnvf 0.004` for Pisces and `--min-alternate-fraction 0.004` for FreeBayes.
-Here is an example low frequency call picked up by VarDict by not FreeBayes or Pisces:
-```
-1       206650065       rs41296034      A       G       196     PASS    ADJAF=0;AF=0.0057;BIAS=1:1;DP=4756;HIAF=0.0058;HICNT=27;HICOV=4692;LSEQ=GTGCTTCGAAAGCCCCAGCA;MQ=58.8;MSI=5;MSILEN=1;NM=1.2;ODDRATIO=0;PMEAN=25.4;PSTD=1;QSTD=1;QUAL=41.4;REFBIAS=6:4719;RSEQ=AAAGCGTTCGGGGTGACTGT;SAMPLE=N13532;SBF=1;SHIFT3=0;SN=54;TYPE=SNV;VARBIAS=0:27;VD=27;ANN=G|synonymous_variant|LOW|IKBKE|ENSG00000143466|transcript|ENST00000367120|protein_coding|7/22|c.585A>G|p.Gln195Gln|958/3269|585/2151|195/716||,G|synonymous_variant|LOW|IKBKE|ENSG00000143466|transcript|ENST00000537984|protein_coding|6/21|c.330A>G|p.Gln110Gln|792/2487|330/1896|110/631||,G|upstream_gene_variant|MODIFIER|IKBKE|ENSG00000143466|transcript|ENST00000492570|processed_transcript||n.-3344A>G|||||3344|,G|downstream_gene_variant|MODIFIER|IKBKE|ENSG00000143466|transcript|ENST00000463979|processed_transcript||n.*1594A>G|||||1594|  GT:DP:VD:AD:AF:RD:ALD   0/1:4756:27:4725,27:0.0057:6,4719:0,27
-```
+Pisces required [parameter adjustments](https://github.com/bcbio/bcbio-nextgen/commit/49d0cbb1f6dcbea629c63749e2f9813bd06dcee3) for detection at <1% frequency, thanks to [helpful suggestions from Tamsen Dunn](https://github.com/Illumina/Pisces/issues/14#issuecomment-399756862).
+
+FreeBayes also required changes to call somatic variants at this low frequency.
+We needed to [call with high ploidy](https://github.com/ekg/freebayes/issues/272#issuecomment-210982788),
+[control memory usage by limiting alleles examming](https://github.com/ekg/freebayes/issues/465)
+and then resolve the high ploidy calls back to a diploid representation.
+
+For Octopus we sill need to do additional tweaking for low frequency tumor only calling.
+For example: N13532 has 0.5% with 293 SNPs and 164 indels. Octopus only calls 1
+passing indel but does have 40 additional calls that are filtered, primarily
+because of the FRF filter, which measures the number of reads removed for
+calling. So we'd need to tweak in terms of both detecting and sensitivity and
+will follow up and work to improve.
