@@ -28,8 +28,14 @@ frequency, versus only a handful for the 4th. Call rates at higher frequencies,
 including still very low frequency 0.1%-0.5% calls are relatively similar
 between all 4 samples.
 
-It appears as if our added depth and resolution is likely detecting a high
-percentage of low frequency noise and the key questions are:
+The primary difference between the samples is the three noisier samples have a
+high percent of UMIs supported by a single read:
+
+![UMI counts](images/umi_counts.png)
+
+Filtering by methods that remove these singleton UMIs remove the 0.1% variants.
+Our added depth and resolution is likely providing a high percentage of low
+frequency noise and the key questions are:
 
 - How do the samples differ to account for the higher amount of signal/noise at
   low frequencies?
