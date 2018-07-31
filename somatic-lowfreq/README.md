@@ -46,6 +46,7 @@ Versions:
 - vardict-java 1.5.1
 - freebayes 1.1.0.46
 - octopus 0.4.1a
+- MuTect2 4.0.6.0
 
 ## Low frequency UMI-tagged tumor only samples
 
@@ -82,3 +83,38 @@ passing indel but does have 40 additional calls that are filtered, primarily
 because of the FRF filter, which measures the number of reads removed for
 calling. So we'd need to tweak in terms of both detecting and sensitivity and
 will follow up and work to improve.
+
+## Tweaking fgbio UMI consensus settings
+
+For UMI tagged inputs, a key step is collapsing the initial reads by UMI and
+duplication status into consensus called input reads. The
+[fgbio](https://github.com/fulcrumgenomics/fgbio) toolkit has highly
+configurable approaches to do this and we're exploring if tweaking parameters
+can help with improving sensitivity and specificity. As a first pass we aimed to
+match to the parameters used in the smcounter2 comparison, with the major change
+being a shift in filtering on input base quality from 2 in bcbio to 25 in
+smcounter2.
+
+![smcounter2 samples, fgbio input base quality 25](smcounter2/fgbio_mininputbq25/grading-summary-combined.png)
+
+This provides a moderate improvement in specificity at the cost of some
+specificity, but does not match the specificity differences seen in the
+smcounter2 paper. We'll continue to explore more to help supplement variant
+calling improvements with UMI handling.
+
+### fgbio parameters
+
+CallMolecularConsensusReads
+
+| param | default | bcbio | smcounter2 |
+| --- | --- | --- | --- |
+| --min-reads | required | 1 | 1  |
+| --min-input-base-quality | 10 | 2 | 25 |
+
+FilterConsensusReads
+
+| param | default | bcbio | smcounter2 |
+| --- | --- | --- | --- |
+| --min-reads | required | 1 | 1 |
+| --max-base-error-rate | 0.1  | 0.1  | 0.2 |
+| --min-base-quality | required | 13 | 0|
