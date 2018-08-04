@@ -89,18 +89,46 @@ will follow up and work to improve.
 For UMI tagged inputs, a key step is collapsing the initial reads by UMI and
 duplication status into consensus called input reads. The
 [fgbio](https://github.com/fulcrumgenomics/fgbio) toolkit has highly
-configurable approaches to do this and we're exploring if tweaking parameters
-can help with improving sensitivity and specificity. As a first pass we aimed to
-match to the parameters used in the smcounter2 comparison, with the major change
-being a shift in filtering on input base quality from 2 in bcbio to 25 in
-smcounter2.
+configurable approaches to do this and we're exploring how tweaking parameters
+can help with improving sensitivity and specificity.
+
+The coverage for the default bcbio fgbio settings are:
+
+![default fgbio coverage](smcounter2/multiqc_coverage.png)
+
+### min-reads 2
+
+The biggest improvement, in both quality and speed, comes from setting
+`--min-reads 2`. As described in the [fgbio CallMolecularConsensusReads documentation](https://fulcrumgenomics.github.io/fgbio/tools/latest/CallMolecularConsensusReads.html)
+this parameter is suitable for deeper sequenced samples. It forces
+error correction on all bases since we require at least 2 reads to call a base.
+It also helps with running time since all singletons can be immediately
+discarded during processing.
+
+The summary shows the reduction in overall coverage by removing noisier
+singleton reads from the consensus:
+
+![fgbio min-reads 2 coverage](smcounter2/fgbio_minreads/multiqc_coverage.png)
+
+![smcounter2 samples, fgbio min-reads 2](smcounter2/fgbio_minreads2/grading-summary-combined.png)
+
+### min-base-quality 40
+
+Using `--min-base-quality 40`:
+
+![smcounter2 samples, fgbio min-base-quality 40](smcounter2/fgbio_minbasequal40/grading-summary-combined.png)
+
+### smcounter2 defaults
+
+Using the smcounter2 paper defaults, `--min-reads 2 --min-input-base-quality 25
+--min-base-error-rate 0.2 --min-base-quality 13`
 
 ![smcounter2 samples, fgbio input base quality 25](smcounter2/fgbio_mininputbq25/grading-summary-combined.png)
 
-This provides a moderate improvement in specificity at the cost of some
-specificity, but does not match the specificity differences seen in the
-smcounter2 paper. We'll continue to explore more to help supplement variant
-calling improvements with UMI handling.
+This provides an improvement in specificity at the cost of some specificity, but
+does not match the specificity differences seen in the smcounter2 paper. We'll
+continue to explore more to help supplement variant calling improvements with
+UMI handling.
 
 ### fgbio parameters
 
@@ -108,13 +136,13 @@ CallMolecularConsensusReads
 
 | param | default | bcbio | smcounter2 |
 | --- | --- | --- | --- |
-| --min-reads | required | 1 | 1  |
+| --min-reads | required | 1 | 2  |
 | --min-input-base-quality | 10 | 2 | 25 |
 
 FilterConsensusReads
 
 | param | default | bcbio | smcounter2 |
 | --- | --- | --- | --- |
-| --min-reads | required | 1 | 1 |
+| --min-reads | required | 1 | 2 |
 | --max-base-error-rate | 0.1  | 0.1  | 0.2 |
 | --min-base-quality | required | 13 | 0|
