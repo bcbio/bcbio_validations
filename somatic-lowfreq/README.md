@@ -101,20 +101,38 @@ The coverage for the default bcbio fgbio settings are:
 The biggest improvement, in both quality and speed, comes from setting
 `--min-reads 2`. As described in the [fgbio CallMolecularConsensusReads documentation](https://fulcrumgenomics.github.io/fgbio/tools/latest/CallMolecularConsensusReads.html)
 this parameter is suitable for deeper sequenced samples. It forces
-error correction on all bases since we require at least 2 reads to call a base.
-It also helps with running time since all singletons can be immediately
-discarded during processing.
+error correction on all positions since we require at least 2 reads to pass a
+read. It also helps with running time since all singletons can be immediately
+discarded during processing. Running on the N13532 sample takes 3:22 with
+`--min-reads 2` versus 3:53 without it included.
 
 The summary shows the reduction in overall coverage by removing noisier
 singleton reads from the consensus:
 
-![fgbio min-reads 2 coverage](smcounter2/fgbio_minreads/multiqc_coverage.png)
+![fgbio min-reads 2 coverage](smcounter2/fgbio_minreads2/multiqc_coverage.png)
+
+In the validation, it is effective in removing false positives with minimal
+impact on sensitivity. In some cases (NA13532 indels) it reduces
+sensitivity, but in others (N0261 indels) it improves it by about the same
+amount.
 
 ![smcounter2 samples, fgbio min-reads 2](smcounter2/fgbio_minreads2/grading-summary-combined.png)
 
+This filter seems like a good default, providing samples are deep
+enough. The tricky bit will be determining when we have enough coverage, after
+considering duplication, to apply it. We could examine through downsampling
+these validation samples or exploring other inputs.
+
 ### min-base-quality 40
 
-Using `--min-base-quality 40`:
+Another effective filter is `--min-base-quality 40`, which only allows base
+calls with a high quality. This effectively performs a similar task as
+`--min-reads 2`: the stringencyy requires multiple input bases to call a consensus
+position so noisier singleton reads get removed by having too many Ns and
+triggering the `--max-no-call-fraction` filter. The sensitivity/specificity
+improvements are similar to what we see with `--min-reads 2`, with some similar
+tradeoffs on different samples, so it seems worth defaulting to speedier option
+rather than using this:
 
 ![smcounter2 samples, fgbio min-base-quality 40](smcounter2/fgbio_minbasequal40/grading-summary-combined.png)
 
@@ -128,7 +146,7 @@ Using the smcounter2 paper defaults, `--min-reads 2 --min-input-base-quality 25
 This provides an improvement in specificity at the cost of some specificity, but
 does not match the specificity differences seen in the smcounter2 paper. We'll
 continue to explore more to help supplement variant calling improvements with
-UMI handling.
+UMI handling and see if we can match the results found in the paper.
 
 ### fgbio parameters
 
@@ -146,3 +164,15 @@ FilterConsensusReads
 | --min-reads | required | 1 | 2 |
 | --max-base-error-rate | 0.1  | 0.1  | 0.2 |
 | --min-base-quality | required | 13 | 0|
+
+## Validation resources
+
+The consensus BAMs prepared with `--min-reads 2` for the smcounter2 samples are
+available from a Google Storage Bucket:
+
+- https://storage.googleapis.com/bcbiodata/validate/smcounter2/M0253-sort-cumi.bam
+- https://storage.googleapis.com/bcbiodata/validate/smcounter2/M0253-sort-cumi.bam.bai
+- https://storage.googleapis.com/bcbiodata/validate/smcounter2/N0261-sort-cumi.bam
+- https://storage.googleapis.com/bcbiodata/validate/smcounter2/N0261-sort-cumi.bam.bai
+- https://storage.googleapis.com/bcbiodata/validate/smcounter2/N13532-sort-cumi.bam
+- https://storage.googleapis.com/bcbiodata/validate/smcounter2/N13532-sort-cumi.bam.bai
