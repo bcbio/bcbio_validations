@@ -176,3 +176,28 @@ available from a Google Storage Bucket:
 - https://storage.googleapis.com/bcbiodata/validate/smcounter2/N0261-sort-cumi.bam.bai
 - https://storage.googleapis.com/bcbiodata/validate/smcounter2/N13532-sort-cumi.bam
 - https://storage.googleapis.com/bcbiodata/validate/smcounter2/N13532-sort-cumi.bam.bai
+
+## VarDict low frequency false positive removal
+
+To help increase VarDict sensitivity without increasing low frequency false
+positives, we developed a linear filter based for low frequency (<2%) and low
+depth (<30) variants. We plotted several metrics for filtering, finding
+strand bias (SBF), variant depth (VD) and read mismatches (NM) as the most
+discriminatory. Scatter plots of metric combinations showed differences between
+true and false positives, but not easy cutoffs for filtering without significant
+removal of true positives:
+
+![Comparing metrics for TPs/FPs](smcounter2/vardict_fps/vardict-tpfp_stats.png)
+
+Using [scikit-learn](http://scikit-learn.org/stable/modules/linear_model.html)
+we developed a linear model that provided good discrimination on the N13532 test
+sample. When manually applying the developed model it removed ~65% of the false
+positives (421 out of 640) with only a single true positive (1 out of 169)
+filtered.
+
+To assess more generally, we updated to the latest version of VarDict (1.5.5)
+with additional sensitivity and applied the filters. In comparison with the
+previous validation with VarDict 1.5.1 and no filter, it has increased
+sensitivity for both SNPs and Indels with little to no increase in false positives:
+
+![smcounter2 samples, fgbio min-reads 2, low frequency filters](smcounter2/vardict_fps/grading-summary-combined.png)

@@ -67,7 +67,7 @@ def main(tp_file, fp_file):
                 if man_pred != cur_pred:
                     print("***", metric, cur_score, man_pred, cur_pred)
                 if filter_pred != metric:
-                    print(metric, cur_score, man_pred, cur_pred)
+                    print(metric, vd, af, cur_score, man_pred, cur_pred)
                 filters[filter_pred] += 1
         print(metric, dict(filters))
 
