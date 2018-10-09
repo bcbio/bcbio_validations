@@ -1,7 +1,7 @@
 ## bcbio validations
 
 A collection of validations run using [bcbio (Blue Collar Bioinformatics)](
-http://bcb.io/), using this [community build collection of validation workflows](https://github.com/bcbio/bcbio_validation_workflows). This repository organizes validation interpretation done as part of
+http://bcb.io/), using this [community built collection of validation workflows](https://github.com/bcbio/bcbio_validation_workflows). This repository organizes validation interpretation done as part of
 developing and improving analyses. Many previous validations are also available
 in [these albums](https://chapmanb.imgur.com/).
 
