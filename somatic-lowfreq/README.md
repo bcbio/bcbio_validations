@@ -212,15 +212,20 @@ and we'll move forward with the new version in bcbio.
 
 Thanks to Daniel Cooke, the new 0.5.1 beta release of Octopus supports [many new
 useful features for low frequency UMI detection](https://github.com/luntergroup/octopus/issues/29#issuecomment-422136873).
-We tested these out with the following parameters:
-```
---min-credible-somatic-frequency 0.000625 --min-expected-somatic-frequency 0.0025 --downsample-above 2000 --downsample-target 2000 --min-kmer-prune 5 --min-bubble-score 20 --max-haplotypes 200 --somatic-snv-mutation-rate '5e-4' --somatic-indel-mutation-rate '1e-05' --target-working-memory 20G --max-somatic-haplotypes 3 --caller cancer --legacy --tumour-germline-concentration 5 --allow-octopus-duplicates --overlap-masking 0 --somatic-filter-expression 'GQ < 200 | MQ < 30 | SB > 0.2 | SD[.25] > 0.1 | BQ < 40 | DP < 100 | MF > 0.1 | AD < 5 | CC > 1.1 | GQD > 2'
-```
-The main tweaks from the example [UMI configuration](https://github.com/luntergroup/octopus/blob/master/configs/UMI.config) are
-decreasing downsampling to 2000, instead of 4000, and max-haplotypes to 200
-instead of 400. These were done mid-run in response to out of memory issues when
-running on a [8 core, 30Gb n1-standard-8](https://cloud.google.com/compute/docs/machine-types) machine. Unfortunately
-we didn't get useful sensitivity so will explore key parameter tweaks to help
-improve the issue.
+
+We tested these out with the recommended parameters from the
+the example [UMI configuration](https://github.com/luntergroup/octopus/blob/master/configs/UMI.config).
+The only tweak was setting max-haplotypes back to the default of 200
+instead of 400. This helped avoid out of memory issues when
+running on a [8 core, 30Gb n1-standard-8](https://cloud.google.com/compute/docs/machine-types) machine.
+Thanks to tips from Dan, we've greatly improved where octopus is now in these
+validations:
 
 ![smcounter2 samples, fgbio min-reads 2, low frequency filters](smcounter2/vardict_156_octopus_05/grading-summary-combined.png)
+
+We'll continue to tweak to help improve sensitivity, specificity and runtime.
+
+Octopus identifies unique true positives missing in the VarDict calls. All of
+these are also called in VarDict, but flagged with LongMSI which avoids calling
+in high AT regions. In VarDict we may be able to get some extra sensitivity by
+adjusting this flag and examining how we filter in these regions.
