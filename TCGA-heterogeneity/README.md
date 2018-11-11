@@ -28,8 +28,9 @@ purity of 0.57 and a ploidy of 2.9.
 TCGA supplied purity estimates range from 0.61-0.80; the low side is in the
 range of TitanCNA and PureCN estimates, so this is a promising output.
 
-We don't see evidence for LOH in chr6 HLA regions, in either the copy number or
-allele frequency data.
+There is an apparent whole chromosome loss in chromosome 6, indicating LOH for
+the HLA regions. This can be seen in both the CNVkit normalized depth as well as
+the allele frequency changes.
 
 ### CNVkit
 ![TCGA-05-4395](tcga_luad/TCGA-05-4395-01A-cnvkit.png)
