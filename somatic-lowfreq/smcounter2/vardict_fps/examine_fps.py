@@ -35,7 +35,10 @@ def main(tp_file, fp_file):
                     writer.writerow([metric, vtype, vd, af, sbf, nm])
 
     df = pd.read_csv(stat_file)
-    print(df.describe())
+    print("snp")
+    print(df.query("vtype=='snp'").describe())
+    print("indel")
+    print(df.query("vtype=='indel'").describe())
     print(dict(counts))
     print(dict(lf_counts))
     print("tp", df.query("metric == 'tp'").count())
@@ -44,7 +47,7 @@ def main(tp_file, fp_file):
     print("fp", df.query("metric == 'fp'").count())
     sns.set_style("whitegrid")
     g = sns.FacetGrid(df, col="metric", row="vtype")
-    g = g.map(plt.scatter, "SBF", "VD", s=5)
+    g = g.map(plt.scatter, "SBF", "NM", s=5)
     # g = g.map(plt.scatter, "ODDRATIO", "VD", s=5).set(xlim=(1, 5))
     # g = g.map(plt.scatter, "AF", "ODDRATIO", s=5).set(xlim=(0, max_af), ylim=(0, 3.0))
     # g = g.map(plt.scatter, "AF", "VD", s=5).set(xlim=(0, max_af))
@@ -63,11 +66,11 @@ def main(tp_file, fp_file):
             if af <= max_af and vd <= max_dp:
                 cur_score, cur_pred = score(rec, classifiers)
                 man_pred = "fp" if cur_score < 0 else "tp"
-                filter_pred = "fp" if cur_score < -2.5 else "tp"
-                if man_pred != cur_pred:
-                    print("***", metric, cur_score, man_pred, cur_pred)
-                if filter_pred != metric:
-                    print(metric, vd, af, cur_score, man_pred, cur_pred)
+                filter_pred = "fp" if cur_score < 0 else "tp"
+                #if man_pred != cur_pred:
+                #    print("***", metric, cur_score, man_pred, cur_pred)
+                #if filter_pred != metric:
+                #    print(metric, vd, af, cur_score, man_pred, cur_pred)
                 filters[filter_pred] += 1
         print(metric, dict(filters))
 
@@ -75,10 +78,11 @@ def score(rec, classifiers):
     vd, sbf, nm = rec.format("VD")[0][0], rec.INFO.get("SBF"), rec.INFO.get("NM")
     vtype = "indel" if any([len(x) > 1 for x in [rec.REF] + rec.ALT]) else "snp"
     pred = classifiers[vtype].predict([[vd, sbf, nm]])
-    if vtype == "snp":
-        return -1.7075 + vd * 0.2206 + sbf * 1.6367 - 2.7534 * nm, pred[0]
-    else:
-        return -1.9549 + vd * 0.0755 + sbf * 0.9401 - 2.2070 * nm, pred[0]
+    return -1 if (sbf < 0.1 and nm >= 2.0) else 1, pred[0]
+    # if vtype == "snp":
+    #     return -1.7075 + vd * 0.2206 + sbf * 1.6367 - 2.7534 * nm, pred[0]
+    # else:
+    #     return -1.9549 + vd * 0.0755 + sbf * 0.9401 - 2.2070 * nm, pred[0]
 
 def build_classifier(df):
     X = df[["VD", "SBF", "NM"]]

@@ -191,13 +191,20 @@ removal of true positives:
 
 Using [scikit-learn](http://scikit-learn.org/stable/modules/linear_model.html)
 we developed a linear model that provided good discrimination on the N13532 test
-sample. When manually applying the developed model it removed ~65% of the false
-positives (421 out of 640) with only a single true positive (1 out of 169)
-filtered.
+sample. However, it didn't effectively replicate across multiple datasets,
+tending to over filter in higher depth panels with closely spaced mutations. After
+cross validation we ended up with a simpler filter on calls that have multiple
+mismatches (NM >= 2) and strand bias (SBF < 0.1).
 
-To assess more generally, we updated to the latest version of VarDict (1.5.5)
-with additional sensitivity and applied the filters. In comparison with the
-previous validation with VarDict 1.5.1 and no filter, it has increased
+To assess more generally, we incorporated the latest versions of VarDict with
+increased sensitivity and compared:
+
+- VarDict 1.5.1 without additional filters
+- VarDict 1.5.5 with linear model based filter
+- VarDict 1.5.8 with NM and SBF cutoff filter
+
+In comparison with the previous validation with VarDict 1.5.1 and no filter, 
+the finalized cutoff based version increased
 sensitivity for both SNPs and Indels with little to no increase in false positives:
 
 ![smcounter2 samples, fgbio min-reads 2, low frequency filters](smcounter2/vardict_fps/grading-summary-combined.png)
