@@ -281,6 +281,7 @@ chr6	32442940	35797540	594	0.250982	+
 ```
 ['chr6', '26246678', '32299938', '2', '2', '0']
 ['chr6', '32300677', '35797290', '3', '3', '0']
+```
 
 ## TCGA-HNSC
 
@@ -478,5 +479,3 @@ samples rather than an algorithmic issue.
 ```
 ![TCGA-CV-A6JN-01A TitanCNA CNA](tcga_hnsc/images/TCGA-CV-A6JN-01A-titan-cna.png)
 ![TCGA-CV-A6JN-01A TitanCNA LOH](tcga_hnsc/images/TCGA-CV-A6JN-01A-titan-loh.png)
-
-```
