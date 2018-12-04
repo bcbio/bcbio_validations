@@ -529,3 +529,199 @@ samples rather than an algorithmic issue.
 ```
 ![TCGA-CV-A6JN-01A TitanCNA CNA](tcga_hnsc/images/TCGA-CV-A6JN-01A-titan-cna.png)
 ![TCGA-CV-A6JN-01A TitanCNA LOH](tcga_hnsc/images/TCGA-CV-A6JN-01A-titan-loh.png)
+
+## TCGA-PRAD
+
+To include additional cancer types, we ran the same multi-method comparisons
+with TCGA Prostate Adenocarcinoma (TCGA-PRAD) samples. These are a useful
+negative control to ensure we're not overcalling either HLA LOH events or high
+ploidy solutions. All five of the tumors are relatively stable at a genomic
+level and don't have evidence of HLA LOH, which we reflect in our PureCN and
+TitanCNA calls. PureCN does an especially good job of reporting stable
+chromosomal structure in these samples.
+
+### TCGA-CH-5761-01A
+
+|  |  |
+| ---  | --- |
+| LOHHLA | no LOH |
+| PureCN | no LOH |
+| TitanCNA | no LOH |
+#### LOHHLA
+```
+['0.915801252840532', 'hla_a_02_01_01_01', 'hla_a_24_02_01_01', '0.905014251846937', '1.22032604018629']
+['0.434747116162926', 'hla_b_38_01_01', 'hla_b_49_01_01', '1.56462887591378', '1.00232524972568']
+['0.908851703687007', 'hla_c_07_01_01_01', 'hla_c_12_03_01_01', '1.1079388550328', '0.906362101457816']
+```
+#### PureCN
+
+|  |  |
+| ---  | --- |
+| purity | 0.67 |
+| ploidy | 1.96937080113347 |
+```
+['chr6', '1742560', '58553888', 'p', '2', '1', '']
+```
+![TCGA-CH-5761-01A PureCN coverage](images/TCGA-CH-5761-01A-purecn.png)
+![TCGA-CH-5761-01A PureCN sunrise](images/TCGA-CH-5761-01A-purecn-sunrise.png)
+#### TitanCNA
+
+|  |  |
+| ---  | --- |
+| purity | 0.5472 |
+| ploidy | 3.889 |
+```
+['chr6', '1742560', '32460064', '4', '2', '2', 'BCNA']
+['chr6', '32519367', '32522069', '8', '2', '6', 'UBCNA']
+['chr6', '32641396', '32666596', '4', '1', '3', 'ASCNA']
+['chr6', '32815309', '78969860', '4', '2', '2', 'BCNA']
+```
+![TCGA-CH-5761-01A TitanCNA CNA](images/TCGA-CH-5761-01A-titan-cna.png)
+![TCGA-CH-5761-01A TitanCNA LOH](images/TCGA-CH-5761-01A-titan-loh.png)
+### TCGA-EJ-5525-01A
+
+|  |  |
+| ---  | --- |
+| LOHHLA | no LOH |
+| PureCN | no LOH |
+| TitanCNA | no LOH |
+#### LOHHLA
+```
+['0.212963711860743', 'hla_a_01_01_26', 'hla_a_03_01_01_01', '0.863899767354755', '1.23228975575479']
+['0.882654260235376', 'hla_b_07_02_01', 'hla_b_40_01_01', '1.50317348718207', '0.877131806946636']
+['0.767062678326195', 'hla_c_03_04_27', 'hla_c_07_02_01_03', '1.23770659828294', '1.13218032185941']
+```
+#### PureCN
+
+|  |  |
+| ---  | --- |
+| purity | 0.85 |
+| ploidy | 2.0860702434531 |
+```
+['chr6', '1742560', '58553888', 'p', '2', '1', '']
+```
+![TCGA-EJ-5525-01A PureCN coverage](images/TCGA-EJ-5525-01A-purecn.png)
+![TCGA-EJ-5525-01A PureCN sunrise](images/TCGA-EJ-5525-01A-purecn-sunrise.png)
+#### TitanCNA
+
+|  |  |
+| ---  | --- |
+| purity | 0.8452 |
+| ploidy | 1.975 |
+```
+['chr6', '1742560', '31271816', '2', '1', '1', 'HET']
+['chr6', '31356247', '31356423', '6', '2', '4', 'UBCNA']
+['chr6', '31505769', '32460012', '2', '1', '1', 'HET']
+['chr6', '32641969', '32665043', '3', '1', '2', 'GAIN']
+['chr6', '32814372', '170569705', '2', '1', '1', 'HET']
+```
+![TCGA-EJ-5525-01A TitanCNA CNA](images/TCGA-EJ-5525-01A-titan-cna.png)
+![TCGA-EJ-5525-01A TitanCNA LOH](images/TCGA-EJ-5525-01A-titan-loh.png)
+### TCGA-G9-6332-01A
+
+|  |  |
+| ---  | --- |
+| LOHHLA | no LOH |
+| PureCN | no LOH |
+| TitanCNA | no LOH |
+#### LOHHLA
+```
+['0.32658154377967', 'hla_a_11_01_01', 'hla_a_23_01_01', '0.832932871878104', '0.821357710224595']
+['0.392618371012852', 'hla_b_08_01_01', 'hla_b_44_03_01', '1.21579323055203', '0.813202396032932']
+['0.014557375405727', 'hla_c_04_01_01_01', 'hla_c_07_01_01_01', '1.07666377694651', '0.779355869990582']
+```
+#### PureCN
+
+|  |  |
+| ---  | --- |
+| purity | 0.79 |
+| ploidy | 1.95726415150286 |
+```
+['chr6', '1610919', '58553888', 'p', '2', '1', '']
+```
+![TCGA-G9-6332-01A PureCN coverage](images/TCGA-G9-6332-01A-purecn.png)
+![TCGA-G9-6332-01A PureCN sunrise](images/TCGA-G9-6332-01A-purecn-sunrise.png)
+#### TitanCNA
+
+|  |  |
+| ---  | --- |
+| purity | 0.447 |
+| ploidy | 3.93 |
+```
+['chr6', '2623586', '170569705', '5', '2', '3', 'UBCNA']
+```
+![TCGA-G9-6332-01A TitanCNA CNA](images/TCGA-G9-6332-01A-titan-cna.png)
+![TCGA-G9-6332-01A TitanCNA LOH](images/TCGA-G9-6332-01A-titan-loh.png)
+### TCGA-VN-A88Q-01A
+
+|  |  |
+| ---  | --- |
+| LOHHLA | no LOH |
+| PureCN | no LOH |
+| TitanCNA | mixed LOH |
+#### LOHHLA
+```
+['0.121300915858934', 'hla_a_03_01_01_01', 'hla_a_68_02_01_01', '1.43994944634442', '0.917358676003842']
+['0.246701072924912', 'hla_b_07_02_01', 'hla_b_14_02_01', '0.967925252640829', '0.795122270425005']
+['0.0327446740104897', 'hla_c_07_02_01_03', 'hla_c_08_02_01', '1.07439361919298', '0.729618334577592']
+```
+#### PureCN
+
+|  |  |
+| ---  | --- |
+| purity | 0.63 |
+| ploidy | 2.01394303887541 |
+```
+['chr6', '656555', '58553888', 'p', '2', '1', '']
+```
+![TCGA-VN-A88Q-01A PureCN coverage](images/TCGA-VN-A88Q-01A-purecn.png)
+![TCGA-VN-A88Q-01A PureCN sunrise](images/TCGA-VN-A88Q-01A-purecn-sunrise.png)
+#### TitanCNA
+
+|  |  |
+| ---  | --- |
+| purity | 0.687 |
+| ploidy | 1.968 |
+```
+['chr6', '656555', '32443210', '2', '1', '1', 'HET']
+['chr6', '32519532', '32522014', '6', '1', '5', 'ASCNA']
+['chr6', '32641349', '32642175', '2', '0', '2', 'NLOH']
+['chr6', '32661987', '170569705', '2', '1', '1', 'HET']
+```
+![TCGA-VN-A88Q-01A TitanCNA CNA](images/TCGA-VN-A88Q-01A-titan-cna.png)
+![TCGA-VN-A88Q-01A TitanCNA LOH](images/TCGA-VN-A88Q-01A-titan-loh.png)
+### TCGA-YL-A8HK-01A
+
+|  |  |
+| ---  | --- |
+| LOHHLA | no LOH |
+| PureCN | no LOH |
+| TitanCNA | no LOH |
+#### LOHHLA
+```
+['0.803336102854348', 'hla_a_02_01_01_01', 'hla_a_24_03_01', '0.647429520543813', '1.58787322171648']
+['0.564529838127204', 'hla_b_18_01_01_01', 'hla_b_35_02_01', '0.932573201777072', '0.932573201777072']
+['0.425524202622533', 'hla_c_04_01_01_01', 'hla_c_12_03_01_01', '0.57108209401039', '0.75252329525982']
+```
+#### PureCN
+
+|  |  |
+| ---  | --- |
+| purity | 0.37 |
+| ploidy | 1.86363548576786 |
+```
+['chr6', '2623696', '58553888', 'p', '2', '1', '']
+```
+![TCGA-YL-A8HK-01A PureCN coverage](images/TCGA-YL-A8HK-01A-purecn.png)
+![TCGA-YL-A8HK-01A PureCN sunrise](images/TCGA-YL-A8HK-01A-purecn-sunrise.png)
+#### TitanCNA
+
+|  |  |
+| ---  | --- |
+| purity | 0.3279 |
+| ploidy | 2.83 |
+```
+['chr6', '1742560', '56618003', '3', '1', '2', 'GAIN']
+```
+![TCGA-YL-A8HK-01A TitanCNA CNA](images/TCGA-YL-A8HK-01A-titan-cna.png)
+![TCGA-YL-A8HK-01A TitanCNA LOH](images/TCGA-YL-A8HK-01A-titan-loh.png)
