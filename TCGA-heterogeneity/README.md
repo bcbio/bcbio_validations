@@ -562,8 +562,8 @@ chromosomal structure in these samples.
 ```
 ['chr6', '1742560', '58553888', 'p', '2', '1', '']
 ```
-![TCGA-CH-5761-01A PureCN coverage](images/TCGA-CH-5761-01A-purecn.png)
-![TCGA-CH-5761-01A PureCN sunrise](images/TCGA-CH-5761-01A-purecn-sunrise.png)
+![TCGA-CH-5761-01A PureCN coverage](tcga_prad/images/TCGA-CH-5761-01A-purecn.png)
+![TCGA-CH-5761-01A PureCN sunrise](tcga_prad/images/TCGA-CH-5761-01A-purecn-sunrise.png)
 #### TitanCNA
 
 |  |  |
@@ -576,8 +576,8 @@ chromosomal structure in these samples.
 ['chr6', '32641396', '32666596', '4', '1', '3', 'ASCNA']
 ['chr6', '32815309', '78969860', '4', '2', '2', 'BCNA']
 ```
-![TCGA-CH-5761-01A TitanCNA CNA](images/TCGA-CH-5761-01A-titan-cna.png)
-![TCGA-CH-5761-01A TitanCNA LOH](images/TCGA-CH-5761-01A-titan-loh.png)
+![TCGA-CH-5761-01A TitanCNA CNA](tcga_prad/images/TCGA-CH-5761-01A-titan-cna.png)
+![TCGA-CH-5761-01A TitanCNA LOH](tcga_prad/images/TCGA-CH-5761-01A-titan-loh.png)
 ### TCGA-EJ-5525-01A
 
 |  |  |
@@ -600,8 +600,8 @@ chromosomal structure in these samples.
 ```
 ['chr6', '1742560', '58553888', 'p', '2', '1', '']
 ```
-![TCGA-EJ-5525-01A PureCN coverage](images/TCGA-EJ-5525-01A-purecn.png)
-![TCGA-EJ-5525-01A PureCN sunrise](images/TCGA-EJ-5525-01A-purecn-sunrise.png)
+![TCGA-EJ-5525-01A PureCN coverage](tcga_prad/images/TCGA-EJ-5525-01A-purecn.png)
+![TCGA-EJ-5525-01A PureCN sunrise](tcga_prad/images/TCGA-EJ-5525-01A-purecn-sunrise.png)
 #### TitanCNA
 
 |  |  |
@@ -615,8 +615,8 @@ chromosomal structure in these samples.
 ['chr6', '32641969', '32665043', '3', '1', '2', 'GAIN']
 ['chr6', '32814372', '170569705', '2', '1', '1', 'HET']
 ```
-![TCGA-EJ-5525-01A TitanCNA CNA](images/TCGA-EJ-5525-01A-titan-cna.png)
-![TCGA-EJ-5525-01A TitanCNA LOH](images/TCGA-EJ-5525-01A-titan-loh.png)
+![TCGA-EJ-5525-01A TitanCNA CNA](tcga_prad/images/TCGA-EJ-5525-01A-titan-cna.png)
+![TCGA-EJ-5525-01A TitanCNA LOH](tcga_prad/images/TCGA-EJ-5525-01A-titan-loh.png)
 ### TCGA-G9-6332-01A
 
 |  |  |
@@ -639,8 +639,8 @@ chromosomal structure in these samples.
 ```
 ['chr6', '1610919', '58553888', 'p', '2', '1', '']
 ```
-![TCGA-G9-6332-01A PureCN coverage](images/TCGA-G9-6332-01A-purecn.png)
-![TCGA-G9-6332-01A PureCN sunrise](images/TCGA-G9-6332-01A-purecn-sunrise.png)
+![TCGA-G9-6332-01A PureCN coverage](tcga_prad/images/TCGA-G9-6332-01A-purecn.png)
+![TCGA-G9-6332-01A PureCN sunrise](tcga_prad/images/TCGA-G9-6332-01A-purecn-sunrise.png)
 #### TitanCNA
 
 |  |  |
@@ -650,8 +650,8 @@ chromosomal structure in these samples.
 ```
 ['chr6', '2623586', '170569705', '5', '2', '3', 'UBCNA']
 ```
-![TCGA-G9-6332-01A TitanCNA CNA](images/TCGA-G9-6332-01A-titan-cna.png)
-![TCGA-G9-6332-01A TitanCNA LOH](images/TCGA-G9-6332-01A-titan-loh.png)
+![TCGA-G9-6332-01A TitanCNA CNA](tcga_prad/images/TCGA-G9-6332-01A-titan-cna.png)
+![TCGA-G9-6332-01A TitanCNA LOH](tcga_prad/images/TCGA-G9-6332-01A-titan-loh.png)
 ### TCGA-VN-A88Q-01A
 
 |  |  |
@@ -674,8 +674,8 @@ chromosomal structure in these samples.
 ```
 ['chr6', '656555', '58553888', 'p', '2', '1', '']
 ```
-![TCGA-VN-A88Q-01A PureCN coverage](images/TCGA-VN-A88Q-01A-purecn.png)
-![TCGA-VN-A88Q-01A PureCN sunrise](images/TCGA-VN-A88Q-01A-purecn-sunrise.png)
+![TCGA-VN-A88Q-01A PureCN coverage](tcga_prad/images/TCGA-VN-A88Q-01A-purecn.png)
+![TCGA-VN-A88Q-01A PureCN sunrise](tcga_prad/images/TCGA-VN-A88Q-01A-purecn-sunrise.png)
 #### TitanCNA
 
 |  |  |
@@ -688,8 +688,8 @@ chromosomal structure in these samples.
 ['chr6', '32641349', '32642175', '2', '0', '2', 'NLOH']
 ['chr6', '32661987', '170569705', '2', '1', '1', 'HET']
 ```
-![TCGA-VN-A88Q-01A TitanCNA CNA](images/TCGA-VN-A88Q-01A-titan-cna.png)
-![TCGA-VN-A88Q-01A TitanCNA LOH](images/TCGA-VN-A88Q-01A-titan-loh.png)
+![TCGA-VN-A88Q-01A TitanCNA CNA](tcga_prad/images/TCGA-VN-A88Q-01A-titan-cna.png)
+![TCGA-VN-A88Q-01A TitanCNA LOH](tcga_prad/images/TCGA-VN-A88Q-01A-titan-loh.png)
 ### TCGA-YL-A8HK-01A
 
 |  |  |
@@ -712,8 +712,8 @@ chromosomal structure in these samples.
 ```
 ['chr6', '2623696', '58553888', 'p', '2', '1', '']
 ```
-![TCGA-YL-A8HK-01A PureCN coverage](images/TCGA-YL-A8HK-01A-purecn.png)
-![TCGA-YL-A8HK-01A PureCN sunrise](images/TCGA-YL-A8HK-01A-purecn-sunrise.png)
+![TCGA-YL-A8HK-01A PureCN coverage](tcga_prad/images/TCGA-YL-A8HK-01A-purecn.png)
+![TCGA-YL-A8HK-01A PureCN sunrise](tcga_prad/images/TCGA-YL-A8HK-01A-purecn-sunrise.png)
 #### TitanCNA
 
 |  |  |
@@ -723,5 +723,5 @@ chromosomal structure in these samples.
 ```
 ['chr6', '1742560', '56618003', '3', '1', '2', 'GAIN']
 ```
-![TCGA-YL-A8HK-01A TitanCNA CNA](images/TCGA-YL-A8HK-01A-titan-cna.png)
-![TCGA-YL-A8HK-01A TitanCNA LOH](images/TCGA-YL-A8HK-01A-titan-loh.png)
+![TCGA-YL-A8HK-01A TitanCNA CNA](tcga_prad/images/TCGA-YL-A8HK-01A-titan-cna.png)
+![TCGA-YL-A8HK-01A TitanCNA LOH](tcga_prad/images/TCGA-YL-A8HK-01A-titan-loh.png)
