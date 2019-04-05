@@ -143,7 +143,7 @@ versions:
 * metasv,0.4.0
 * the alignment was done vs GRCh37 without decoy
 
-![Validation 2018](https://github.com/naumenko-sa/crg/blob/master/huref_sv/validation2018.png)
+![Validation 2018](validation2018.png)
 
 ## 7. Results - 2019
 versions:
