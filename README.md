@@ -15,3 +15,4 @@ widely.
 - deepvariant -- Validations with the DeepVariant caller and CHM datasets.
 - somatic-lowfreq -- Cancer calling of low frequency somatic variants, including
   tumor-only and FFPE samples.
+- [huref_sv](huref_sv/README.md) -- SV calling validation of 8 algorithms in 2018 and 2019 using HuRef benchmark.
