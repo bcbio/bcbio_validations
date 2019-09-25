@@ -1,0 +1,9 @@
+---
+details:
+  - analysis: RNA-seq
+    genome_build: hg38
+    algorithm:
+      aligner: star
+      fusion_caller: [oncofuse, pizzly, ericscript, arriba]
+upload:
+  dir: ../final
