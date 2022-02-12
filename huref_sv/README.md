@@ -1,5 +1,7 @@
 # Validation of structural variant (SV) calling in bcbio using HuRef benchmark
 
+* See some 2022 SV validations here: https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkac039/6517943?login=false
+
 * Benchmark (DEL calls)
 [Trost2018](http://www.cell.com/action/showImagesData?pii=S0002-9297%2817%2930496-2)  
 I used an updated benchmark (personal communication from Brett Trost), which includes calls from PacBio:
